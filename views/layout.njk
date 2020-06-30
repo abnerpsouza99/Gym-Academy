@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- The tag title in head modify the name of page in the navegator -->
+        {% block title%}
+        <title>Gym Manager</title>
+        {% endblock title%}
+
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="links">
+                <!-- The "a" tag is for hyperlinks -->
+                <a href="/" class="active">Instructors</a>
+                <a href="/members">Members</a>
+            </div>
+        </header>
+
+        {% block content %}
+        {% endblock content %}
+    
+    </body>
+</html>
