@@ -1,0 +1,22 @@
+{
+    "instructors": [
+        {
+            "id": 1,
+            "avatar_url": "https://google.com",
+            "name": "Abner Pena de Souza",
+            "birth": 928800000000,
+            "gender": "M",
+            "services": "Crossfit",
+            "created_at": 1594063387321
+        },
+        {
+            "id": 2,
+            "avatar_url": "https://google.com",
+            "name": "Juliana",
+            "birth": 897696000000,
+            "gender": "F",
+            "services": "Funcional",
+            "created_at": 1594063444707
+        }
+    ]
+}
