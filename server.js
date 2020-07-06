@@ -1,12 +1,14 @@
 const express = require('express')
 const server = express()
 const nunjucks = require("nunjucks")
+const bodyParser = require('body-parser')
 
 /* This const is responsable for routes. (Import the routes of routes.js) */
 const routes = require('./routes')
 
 server.use(routes)
 
+server.use(express.urlencoded({extended: true}))
 server.use(express.static('public/styles'))
 server.use(express.static('public/assets'))
 server.use(express.static('src/scripts'))
