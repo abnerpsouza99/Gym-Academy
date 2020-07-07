@@ -15,7 +15,15 @@ exports.show = function(req, res) {
         return res.send('Instructor not found!')
     }
 
-    return res.send(foundInstructor)
+    const instructor = {
+        // Spread Operator: Serve para trazer tudo de foundInstructor
+        ...foundInstructor,
+        age: "",
+        services: foundInstructor.services.split(","), // Split serve para transformar uma String em Array | Insere o item a cada vírgula
+        created_at: ""
+    }
+
+    return res.render("instructors/show", {instructor})
 }
 
 
