@@ -1,5 +1,7 @@
 const fs = require('fs')
 const data = require('./data.json')
+// Desestruturando objeto do utils.js, pegando o atributo age
+const { age } = require('./utils')
 
 // Show
 exports.show = function(req, res) {
@@ -14,11 +16,11 @@ exports.show = function(req, res) {
     if(!foundInstructor){
         return res.send('Instructor not found!')
     }
-
+    
     const instructor = {
         // Spread Operator: Serve para trazer tudo de foundInstructor
         ...foundInstructor,
-        age: "",
+        age: age(foundInstructor.birth),
         services: foundInstructor.services.split(","), // Split serve para transformar uma String em Array | Insere o item a cada vírgula
         created_at: ""
     }
