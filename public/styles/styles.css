@@ -3,6 +3,8 @@
 :root {
     --main-color: #7159c1;
     --secondary-color: #F7DF1E;
+    --bg-color: white;
+    --color-green: #50fa7b; 
 }
 
 * {
@@ -16,16 +18,71 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+main {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    color: var(--color-text);
+    background: var(--background-color);
+    transition: background-color .5s ease-in-out, color .5s ease-in-out;
+}
+
+.dark {
+    --background-color: #282a36;
+    --color-text: #fff;
+    color: var(--color-text);
+    background: var(--background-color);
+    transition: background-color .5s ease-in-out, color .5s ease-in-out;
+}
+
 header {
-    background-color: white;
+    background-color: var(--bg-color);
+    width: 100%;
+    padding: 35px;
+    color: #777;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: none;
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out;
+}
+
+header .darkModeBlock {
+    display: block;
+}
+
+header h3 {
+    color: #777;
+    transition: color .5s ease-in-out;
+}
+
+.headerDarkMode {
+    --background-color: #282a36;
+    background-color: var(--background-color);
+    color: white;
     width: 100%;
     padding: 35px;
     text-align: center;
     box-sizing: border-box;
+    border-bottom: 1px solid gray;
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out;
+}
+
+.headerDarkMode h3 {
+    color: white;
+    transition: color .5s ease-in-out;
 }
 
 .links {
     font-size: 25px;
+    display: grid;
+    padding-bottom: 5px;
+    margin-right: 200px;
+    margin-left: 200px;
+    padding-bottom: 1px;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: #777;
+    align-items: center;
+    transition: color .5s ease-in-out;
 
 }
 
@@ -38,6 +95,12 @@ header {
     text-decoration: none;
     color: #777;
     position: relative;
+}
+
+
+.linksDarkMode {
+    color: white;
+    transition: color .5s ease-in-out;
 }
 
 .links a.active {
@@ -99,10 +162,48 @@ header {
     }
 }
 
+/* Toggle darkMode */
+.darkMode {
+    border: 1px solid #333;
+    border-radius: 22px;
+    background-color: #c1c1c1;
+    width: 70px;
+    height: 35px;
+    display: inline-block;
+    padding: 3px;
+}
+
+.dark-mode-on {
+    border: 1px solid #fff;
+    background-color: var(--color-green);
+}
+
+.darkMode .dark-mode-circle {
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+ .circle-right {
+    transform: translateX(32px);
+    background-color: #aaaaaa !important;
+} 
+
+
 /* ---- DETAILS ---- */
 
 .details {
     padding: 35px;
+    background-color: white;
+    transition: background-color .5s ease-in-out;
+}
+
+.detailsDarkMode {
+    --background-color: #e5e5e5;
+    background-color: var(--background-color);
+    transition: background-color .5s ease-in-out;
 }
 
 .details .item {
@@ -154,9 +255,16 @@ header {
 input {
     width: 100%;
     outline: none;
+    background-color: rgba(0, 0, 0, 0.0);
     color: #555;
     font-weight: bold;
     font-size: 20px;
+    transition: background-color .5s ease-in-out;
+}
+
+.inputDarkMode {
+    background-color: #e5e5e5;
+    transition: background-color .5s ease-in-out;
 }
 
 input[type="radio"]{
@@ -177,4 +285,57 @@ button[type="submit"] {
     color: white;
     width: 100%;
     font-size: 16px;
+}
+
+input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.toggle .darkMode {
+    margin-right: 16px;
+    text-align: center;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: grey;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+}
+
+label::after{
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background-color: var(--main-color);
+}
+
+input:checked + label::after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 45px;
 }

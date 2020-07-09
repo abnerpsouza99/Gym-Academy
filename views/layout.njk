@@ -3,23 +3,33 @@
     <head>
         <!-- The tag title in head modify the name of page in the navegator -->
         {% block title%}
-        <title>Gym Manager</title>
+            <title>Gym Manager</title>
         {% endblock title%}
 
         <link rel="stylesheet" href="/styles.css">
     </head>
 
     <body>
-        <header>
-            <div class="links">
-                <!-- The "a" tag is for hyperlinks -->
-                <a href="/" class="active">Instructors</a>
-                <a href="/members">Members</a>
-            </div>
-        </header>
+        <main>
+            <header>
+                <div class="links">
+                    <!-- The "a" tag is for hyperlinks -->
+                    <a href="/" class="active">Instructors</a>
+                    <a href="/members">Members</a>
+                    <div class="darkModeBlock">
+                        <h3>Dark Mode</h3>
+                        <div class="darkMode" onclick="darkMode()" id="toggleButton">
+                            <div class="dark-mode-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
-        {% block content %}
-        {% endblock content %}
-    
+            {% block content %}{% endblock content %}
+
+        </main>
+
+        <script src="/scripts.js"></script>
+
     </body>
 </html>
