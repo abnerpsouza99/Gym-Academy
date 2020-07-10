@@ -17,6 +17,15 @@
             "gender": "F",
             "services": "Funcional",
             "created_at": 1594063444707
+        },
+        {
+            "id": 3,
+            "avatar_url": "https://www.laurodefreitas.ba.gov.br/imagens/img_user/1583533628060320jpg",
+            "name": "Adriano Lopes",
+            "birth": 637113600000,
+            "gender": "M",
+            "services": "Crossfit",
+            "created_at": 1594383041478
         }
     ]
 }

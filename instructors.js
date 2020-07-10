@@ -1,5 +1,6 @@
 const fs = require('fs')
 const data = require('./data.json')
+const Intl = require('intl')
 // Desestruturando objeto do utils.js, pegando o atributo age
 const { age } = require('./utils')
 
@@ -10,7 +11,7 @@ exports.show = function(req, res) {
     const {id} = req.params
 
     const foundInstructor = data.instructors.find(function(instructor){
-        return instructor.id == id
+        return id == instructor.id
     })
 
     if(!foundInstructor){
@@ -22,13 +23,11 @@ exports.show = function(req, res) {
         ...foundInstructor,
         age: age(foundInstructor.birth),
         services: foundInstructor.services.split(","), // Split serve para transformar uma String em Array | Insere o item a cada vírgula
-        created_at: ""
-    }
+        created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at) // Salva a data atual
+    }    
 
     return res.render("instructors/show", {instructor})
 }
-
-
 
 // Create
 exports.post = function(req, res){
@@ -48,7 +47,7 @@ exports.post = function(req, res){
 
 
     birth = Date.parse(birth)
-    const created_at = Date.now()
+    const created_at = new Intl.DateTimeFormat('pt-BR').format(Date.now)
     // Incremento do id
     id = Number(data.instructors.length + 1)
 
@@ -70,5 +69,20 @@ exports.post = function(req, res){
         }
         return res.redirect("/instructors")
     })
+}
+
+// Edit
+
+exports.edit = function(req, res) {
+    const {id} = req.params
+    const foundInstructor = data.instructors.find(function(instructor){
+        return id == instructor.id
+    })
+
+    if(!foundInstructor){
+        return res.send('Instructor not found!')
+    }
+    
+    return res.render('instructors/edit', {instructor: foundInstructor})
 }
 
