@@ -2,28 +2,30 @@
 
 {% block content %}
 
-<!-- "?_method=PUT" por conta da dependência metho-override, é possível sobrescrever o método HTTP. 
-    Desta forma, pode ser passado o método PUT, pelo formulário
--->
-<form class="card" action="/instructors?_method=PUT" method="POST">
-    <section 
-    class="avatar" 
-    style="background: url(https://source.unsplash.com/collection/3465564/500x500) no-repeat center center / cover">
-    </section>
-    
-    <section class="details">
-        <h3>Editar Instrutor</h3>
-        
-        {% include 'instructors/fields.njk' %}
+    <div class="card">
 
-        <input type="hidden" name="id" value={{instructor.id}}>
+        <section class="avatar" style="background: url(https://source.unsplash.com/collection/3465564/500x500) no-repeat center center / cover"></section>
 
-    </section>
+        <section class="details">
 
-</form>
+            <form action="/instructors?_method=PUT" method="POST">
+                <h3>Editar Instrutor</h3>
 
+                {% include 'instructors/fields.njk' %}
 
+                <input type="hidden" name="id" value={{instructor.id}}>
 
+            </form>
 
+            <form id="form-delete" action="/instructors?_method=DELETE" method="POST">
+                <input type="hidden" name="id" value={{instructor.id}}>
+                <button type="submit">Deletar</button>
+            </form>
+
+        </section>
+
+    </div>
+
+    <!-- "?_method=PUT" por conta da dependência metho-override, é possível sobrescrever o método HTTP. Desta forma, pode ser passado o método PUT, pelo formulário -->
 
 {% endblock content %}
